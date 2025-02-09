@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Warehouse.Application.Common;
+using Warehouse.Application.CommonDapper;
 using Warehouse.Infrastructure.Common;
 using Warehouse.Infrastructure.Products;
 
@@ -22,6 +23,13 @@ public static class DependencyInjection
         services.AddScoped<IWarehouseRacksRepository, WarehouseRacksRepository>();
         services.AddScoped<IWarehousesSizeRepository, WarehousesSizeRepository>();
         services.AddScoped<IWorkersRepository, WorkersRepository>();
+
+        services.AddScoped<IProductsDapperRepository, ProductsDapperRepository>();
+        services.AddScoped<ITransactionsDapperRepository, TransactionsDapperRepository>();
+        services.AddScoped<IWarehouseRacksDapperRepository, WarehouseRacksDapperRepository>();
+        services.AddScoped<IWarehousesSizeDapperRepository, WarehousesSizeDapperRepository>();
+        services.AddScoped<IWorkersDapperRepository, WorkersDapperRepository>();
+
 
         services.AddScoped<IUnitOfWork>(serviceProvider => serviceProvider.GetRequiredService<WarehouseDbContext>());
         return services;

@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using MediatR;
 using Warehouse.Application.Common;
+using Warehouse.Application.CommonDapper;
 using Warehouse.Domain.Warehouses;
 
 namespace Warehouse.Application.Command.WarehouseRacks.CreateWarehouseRack;
@@ -8,11 +9,16 @@ namespace Warehouse.Application.Command.WarehouseRacks.CreateWarehouseRack;
 public class CreateWarehouseRackCommandHandler : IRequestHandler<CreateWarehouseRackCommand, ErrorOr<WarehouseRack>>
 {
     private readonly IWarehouseRacksRepository _warehouseRacksRepository;
+    private readonly IWarehouseRacksDapperRepository _warehouseRacksDapperRepository;
     private readonly IUnitOfWork _unitOfWork;
 
-    public CreateWarehouseRackCommandHandler(IWarehouseRacksRepository warehouseRacksRepository, IUnitOfWork unitOfWork)
+    public CreateWarehouseRackCommandHandler(
+        IWarehouseRacksRepository warehouseRacksRepository,
+        IWarehouseRacksDapperRepository warehouseRacksDapperRepository,
+        IUnitOfWork unitOfWork)
     {
         _warehouseRacksRepository = warehouseRacksRepository;
+        _warehouseRacksDapperRepository = warehouseRacksDapperRepository;
         _unitOfWork = unitOfWork;
     }
 
@@ -24,8 +30,10 @@ public class CreateWarehouseRackCommandHandler : IRequestHandler<CreateWarehouse
             quantity: request.Quantity,
             warehouseSizeId: request.WarehouseSizeId);
 
-        await _warehouseRacksRepository.AddWarehouseRackAsync(warehouseRack);
-        await _unitOfWork.CommitChangesAsync();
+        //await _warehouseRacksRepository.AddWarehouseRackAsync(warehouseRack);
+        //await _unitOfWork.CommitChangesAsync();
+
+        await _warehouseRacksDapperRepository.AddWarehouseRackAsync(warehouseRack);
 
         return warehouseRack;
     }
