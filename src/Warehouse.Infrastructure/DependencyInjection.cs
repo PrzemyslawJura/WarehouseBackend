@@ -17,7 +17,8 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<WarehouseDbContext>(options =>
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
+        //options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         services.AddScoped<IProductsRepository, ProductsRepository>();
         services.AddScoped<ITransactionsRepository, TransactionsRepository>();
         services.AddScoped<IWarehouseRacksRepository, WarehouseRacksRepository>();

@@ -22,5 +22,6 @@ public class Product
         Description = description;
     }
 
+
     private Product() { }
 }

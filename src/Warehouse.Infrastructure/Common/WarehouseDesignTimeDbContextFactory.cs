@@ -15,7 +15,8 @@ internal class WarehouseDesignTimeDbContextFactory : IDesignTimeDbContextFactory
         var connectionString = configuration.GetConnectionString("DefaultConnection");
 
         var optionsBuilder = new DbContextOptionsBuilder<WarehouseDbContext>();
-        optionsBuilder.UseSqlServer(connectionString);
+        //optionsBuilder.UseSqlServer(connectionString);
+        optionsBuilder.UseSqlite(connectionString);
 
         return new WarehouseDbContext(optionsBuilder.Options);
     }
