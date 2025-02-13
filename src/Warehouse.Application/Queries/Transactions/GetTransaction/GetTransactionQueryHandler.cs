@@ -23,7 +23,7 @@ public class GetTransactionQueryHandler : IRequestHandler<GetTransactionQuery, E
         var transaction = await _transactionsDapperRepository.GetByIdAsync(query.Id);
 
         return transaction is null
-            ? Error.NotFound(description: "Worker not found")
+            ? Error.NotFound(description: "Transaction found")
             : transaction;
     }
 }

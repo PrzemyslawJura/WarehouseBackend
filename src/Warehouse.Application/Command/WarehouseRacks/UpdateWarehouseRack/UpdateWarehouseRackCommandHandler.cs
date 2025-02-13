@@ -23,18 +23,18 @@ public class UpdateWarehouseRackCommandHandler : IRequestHandler<UpdateWarehouse
 
     public async Task<ErrorOr<WarehouseRack>> Handle(UpdateWarehouseRackCommand request, CancellationToken cancellationToken)
     {
-        var worker = new WarehouseRack(
+        var warehouseRack = new WarehouseRack(
             id: request.Id,
             sector: request.Sector,
             rack: request.Rack,
             quantity: request.Quantity,
             warehouseSizeId: request.WarehouseSizeId);
 
-        //await _warehouseRacksRepository.UpdateWarehouseRackAsync(worker);
+        //await _warehouseRacksRepository.UpdateWarehouseRackAsync(warehouseRack);
         //await _unitOfWork.CommitChangesAsync();
 
-        await _warehouseRacksDapperRepository.UpdateWarehouseRackAsync(worker);
+        await _warehouseRacksDapperRepository.UpdateWarehouseRackAsync(warehouseRack);
 
-        return worker;
+        return warehouseRack;
     }
 }

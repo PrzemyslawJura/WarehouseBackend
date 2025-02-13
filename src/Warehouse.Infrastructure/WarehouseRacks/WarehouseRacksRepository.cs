@@ -12,9 +12,9 @@ public class WarehouseRacksRepository : IWarehouseRacksRepository
     {
         _dbContext = dbContext;
     }
-    public async Task AddWarehouseRackAsync(WarehouseRack WarehouseRack)
+    public async Task AddWarehouseRackAsync(WarehouseRack warehouseRack)
     {
-        await _dbContext.WarehouseRacks.AddAsync(WarehouseRack);
+        await _dbContext.WarehouseRacks.AddAsync(warehouseRack);
     }
 
     public async Task<WarehouseRack?> GetByIdAsync(Guid id)
@@ -27,16 +27,16 @@ public class WarehouseRacksRepository : IWarehouseRacksRepository
         return await _dbContext.WarehouseRacks.ToListAsync();
     }
 
-    public Task RemoveWarehouseRackAsync(WarehouseRack WarehouseRack)
+    public Task RemoveWarehouseRackAsync(WarehouseRack warehouseRack)
     {
-        _dbContext.Remove(WarehouseRack);
+        _dbContext.Remove(warehouseRack);
 
         return Task.CompletedTask;
     }
 
-    public Task UpdateWarehouseRackAsync(WarehouseRack WarehouseRack)
+    public Task UpdateWarehouseRackAsync(WarehouseRack warehouseRack)
     {
-        _dbContext.Update(WarehouseRack);
+        _dbContext.Update(warehouseRack);
 
         return Task.CompletedTask;
     }

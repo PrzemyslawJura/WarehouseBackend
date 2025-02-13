@@ -12,9 +12,9 @@ public class WorkersRepository : IWorkersRepository
     {
         _dbContext = dbContext;
     }
-    public async Task AddWorkerAsync(Worker Worker)
+    public async Task AddWorkerAsync(Worker worker)
     {
-        await _dbContext.Workers.AddAsync(Worker);
+        await _dbContext.Workers.AddAsync(worker);
     }
 
     public async Task<Worker?> GetByIdAsync(Guid id)
@@ -27,16 +27,16 @@ public class WorkersRepository : IWorkersRepository
         return await _dbContext.Workers.ToListAsync();
     }
 
-    public Task RemoveWorkerAsync(Worker Worker)
+    public Task RemoveWorkerAsync(Worker worker)
     {
-        _dbContext.Remove(Worker);
+        _dbContext.Remove(worker);
 
         return Task.CompletedTask;
     }
 
-    public Task UpdateWorkerAsync(Worker Worker)
+    public Task UpdateWorkerAsync(Worker worker)
     {
-        _dbContext.Update(Worker);
+        _dbContext.Update(worker);
 
         return Task.CompletedTask;
     }

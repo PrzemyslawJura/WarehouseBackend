@@ -12,9 +12,9 @@ public class WarehousesSizeRepository : IWarehousesSizeRepository
     {
         _dbContext = dbContext;
     }
-    public async Task AddWarehouseSizeAsync(WarehouseSize WarehouseSize)
+    public async Task AddWarehouseSizeAsync(WarehouseSize warehouseSize)
     {
-        await _dbContext.WarehousesSize.AddAsync(WarehouseSize);
+        await _dbContext.WarehousesSize.AddAsync(warehouseSize);
     }
 
     public async Task<WarehouseSize?> GetByIdAsync(Guid id)
@@ -27,16 +27,16 @@ public class WarehousesSizeRepository : IWarehousesSizeRepository
         return await _dbContext.WarehousesSize.ToListAsync();
     }
 
-    public Task RemoveWarehouseSizeAsync(WarehouseSize WarehouseSize)
+    public Task RemoveWarehouseSizeAsync(WarehouseSize warehouseSize)
     {
-        _dbContext.Remove(WarehouseSize);
+        _dbContext.Remove(warehouseSize);
 
         return Task.CompletedTask;
     }
 
-    public Task UpdateWarehouseSizeAsync(WarehouseSize WarehouseSize)
+    public Task UpdateWarehouseSizeAsync(WarehouseSize warehouseSize)
     {
-        _dbContext.Update(WarehouseSize);
+        _dbContext.Update(warehouseSize);
 
         return Task.CompletedTask;
     }

@@ -5,6 +5,10 @@ using Warehouse.Application.Common;
 using Warehouse.Application.CommonDapper;
 using Warehouse.Infrastructure.Common;
 using Warehouse.Infrastructure.Products;
+using Warehouse.Infrastructure.Transactions;
+using Warehouse.Infrastructure.WarehouseRacks;
+using Warehouse.Infrastructure.WarehousesSize;
+using Warehouse.Infrastructure.Workers;
 
 namespace Warehouse.Infrastructure;
 public static class DependencyInjection
